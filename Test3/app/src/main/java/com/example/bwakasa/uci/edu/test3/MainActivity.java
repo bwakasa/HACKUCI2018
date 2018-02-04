@@ -27,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private Button mFireBaseBtn;
     private DatabaseReference mDatabase;
     private DatabaseReference nDatabase;
+    private DatabaseReference rDatabase;
     private EditText mNameField;
     private EditText mEmailField;
+
 
     private Button mSelectImage;
     private StorageReference mStorage;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         mSelectImage = (Button) findViewById(R.id.selectimage);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        rDatabase = FirebaseDatabase.getInstance().getReference("Fights");
         mFireBaseBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -108,5 +111,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
 
 }

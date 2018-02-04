@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.widget.Button;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -26,17 +29,18 @@ import com.google.firebase.storage.UploadTask;
 
 import java.net.URI;
 import java.util.HashMap;
-
+import java.util.*;
 /**
  * Created by blake on 2/3/2018.
  */
 
 public class PhotoData extends AppCompatActivity {
 
-
+    ArrayList<String> alist;
     private Button mSelectImage;
     private StorageReference mStorage;
     private static final int GALLERY_INTENT = 2;
+    private DatabaseReference rDatabase;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,8 +55,22 @@ public class PhotoData extends AppCompatActivity {
                 intent.setType("image/*");
 
                 startActivityForResult(intent,GALLERY_INTENT);
+
             }
         });
+        rDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.getValue().toString();
+                alist.add(name);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
