@@ -1,5 +1,6 @@
 package com.example.bwakasa.uci.edu.test3;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -64,9 +65,14 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
         else if(view == rate)
         {
 //            rate.setVisibility(View.GONE);
+
+       //     myIntent.putExtra(VARIABLE NAME, INFO GOES HERE); <- if we need to pass in variables
+
         }
         else if(view == compete)
         {
+            Intent myIntent = new Intent(this, UploadScreen.class);
+            startActivity(myIntent);
 //            compete.setVisibility(View.GONE);
         }
         else if(view == voted)
