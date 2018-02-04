@@ -24,12 +24,15 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
     private Button mFireBaseBtn;
     private DatabaseReference mDatabase;
+    private DatabaseReference nDatabase;
     private EditText mNameField;
     private EditText mEmailField;
 
     private Button mSelectImage;
     private StorageReference mStorage;
     private static final int GALLERY_INTENT = 2;
+    private String Dkey;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +49,10 @@ public class MainActivity extends AppCompatActivity {
         mEmailField = (EditText) findViewById(R.id.email_field);
 
         mStorage = FirebaseStorage.getInstance().getReference();
+        nDatabase = FirebaseDatabase.getInstance().getReference("Fights");
+        Dkey = nDatabase.child("Fights").push().getKey();
         mSelectImage = (Button) findViewById(R.id.selectimage);
-        //mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mFireBaseBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -89,8 +94,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == GALLERY_INTENT &&resultCode == RESULT_OK){
+
             Uri uri = data.getData();
-            StorageReference ref= mStorage.child("Photos").child(uri.getLastPathSegment());
+            String val = uri.getLastPathSegment();
+            StorageReference ref= mStorage.child("Photos").child(val);
+            nDatabase.child(Dkey).child("picture1").setValue(val);
+            nDatabase.child(Dkey).child("score1").setValue(0);
+            nDatabase.child(Dkey).child("score2").setValue(0);
 
             ref.putFile(uri);
 
