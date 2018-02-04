@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
@@ -159,8 +160,14 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
 
             b1.setVisibility(View.GONE);
             b2.setVisibility(View.GONE);
-            current_match = (HashMap.Entry<String, HashMap<String,String>>) it.next();
-            display(current_match);
+            if(it.hasNext()) {
+                current_match = (HashMap.Entry<String, HashMap<String, String>>) it.next();
+                display(current_match);
+            }
+            else{
+                Toast myToast = Toast.makeText(getApplicationContext(), "No more pictures to load", Toast.LENGTH_LONG);
+                myToast.show();
+            }
         }
         else if (view == b2)
         {
@@ -178,8 +185,14 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
 
             b1.setVisibility(View.GONE);
             b2.setVisibility(View.GONE);
-            current_match = (HashMap.Entry<String, HashMap<String,String>>) it.next();
-            display(current_match);
+            if(it.hasNext()) {
+                current_match = (HashMap.Entry<String, HashMap<String, String>>) it.next();
+                display(current_match);
+            }
+            else{
+                Toast myToast = Toast.makeText(getApplicationContext(), "No more pictures to load", Toast.LENGTH_LONG);
+                myToast.show();
+            }
         }
 
         else if(view == rate)
