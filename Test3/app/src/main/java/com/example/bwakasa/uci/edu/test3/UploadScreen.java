@@ -77,6 +77,8 @@ public class UploadScreen extends AppCompatActivity implements Serializable{
         picked_yours = false;
         picked_theirs = false;
 
+        setTitle("Upload Photos");
+
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {

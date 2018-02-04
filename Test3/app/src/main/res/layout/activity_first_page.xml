@@ -6,35 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.bwakasa.uci.edu.test3.firstPage">
 
-    <TextView
-        android:id="@+id/integer_number1"
-        android:layout_width="10dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="184dp"
-        android:text="0"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.785"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/integer_number2"
-        android:layout_width="17dp"
-        android:layout_height="27dp"
-        android:layout_marginBottom="240dp"
-        android:layout_marginEnd="272dp"
-        android:text="0"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" />
-
     <ImageButton
         android:id="@+id/imageB1"
         android:layout_width="0dp"

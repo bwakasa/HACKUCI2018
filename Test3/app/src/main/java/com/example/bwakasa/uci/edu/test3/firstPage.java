@@ -210,6 +210,9 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
         }
         else if(view == voted)
         {
+            Intent myIntent = new Intent(this, Results.class);
+            myIntent.putExtra("table", table);
+            startActivity(myIntent);
 //            voted.setVisibility(View.GONE);
         }
     }
