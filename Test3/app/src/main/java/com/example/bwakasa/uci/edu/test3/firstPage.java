@@ -20,6 +20,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+
 public class firstPage extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton b1;
@@ -32,6 +36,7 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
     int counter;
     int counter2;
     String strcounter;
+    Set<String> sSet;
 
     FirebaseDatabase FDB;
     DatabaseReference DBref;
@@ -64,6 +69,11 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
         DBref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                for( DataSnapshot sShot:dataSnapshot.child("Match").getChildren()){
+                   String s = (sShot.child("image_key1").getValue()).toString();
+                   
+                }
+
 
             }
 
@@ -71,7 +81,8 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        })
+        });
+
         {
 
         }
