@@ -108,8 +108,6 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
 
         b1 = findViewById(R.id.imageB1);
         b2 = findViewById(R.id.imageB2);
-        score = findViewById(R.id.integer_number1);
-        score2 =  findViewById(R.id.integer_number2);
         rate = findViewById(R.id.button);
         compete = findViewById(R.id.button2);
         voted = findViewById(R.id.button3);
