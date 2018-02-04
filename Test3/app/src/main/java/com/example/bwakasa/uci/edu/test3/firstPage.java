@@ -119,18 +119,6 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
 
-        DBref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                table = (HashMap<String, HashMap<String,String>>) snapshot.getValue();
-                it = table.entrySet().iterator();
-                current_match = (HashMap.Entry<String, HashMap<String,String>>) it.next();
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.i("Cancelled: ", "Failed to read value.");
-            }
-        });
     }
 
     public void display(HashMap.Entry<String, HashMap<String,String>> match) {
@@ -171,10 +159,8 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
 
             b1.setVisibility(View.GONE);
             b2.setVisibility(View.GONE);
-            if(it.hasNext()) {
-                current_match = (HashMap.Entry<String, HashMap<String, String>>) it.next();
-                display(current_match);
-            }
+            current_match = (HashMap.Entry<String, HashMap<String,String>>) it.next();
+            display(current_match);
         }
         else if (view == b2)
         {
@@ -192,10 +178,8 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
 
             b1.setVisibility(View.GONE);
             b2.setVisibility(View.GONE);
-            if(it.hasNext()) {
-                current_match = (HashMap.Entry<String, HashMap<String, String>>) it.next();
-                display(current_match);
-            }
+            current_match = (HashMap.Entry<String, HashMap<String,String>>) it.next();
+            display(current_match);
         }
 
         else if(view == rate)
