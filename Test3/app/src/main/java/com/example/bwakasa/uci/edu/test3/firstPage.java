@@ -1,6 +1,7 @@
 package com.example.bwakasa.uci.edu.test3;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,16 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextClock;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageMetadata;
+import com.google.firebase.storage.StorageReference;
 
 public class firstPage extends AppCompatActivity implements View.OnClickListener{
 
@@ -22,10 +33,20 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
     int counter2;
     String strcounter;
 
+    FirebaseDatabase FDB;
+    DatabaseReference DBref;
+    DatabaseReference DBref2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_page);
+        setTitle("PetCompare");
+        FDB = FirebaseDatabase.getInstance();
+        DBref = FDB.getReference("image_key1");
+        DBref2 = FDB.getReference("image_key2");
+
+
         b1 = findViewById(R.id.imageB1);
         b2 = findViewById(R.id.imageB2);
         score = findViewById(R.id.integer_number1);
@@ -40,9 +61,25 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
 
+        DBref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        })
+        {
+
+        }
+
+
     }
 
-    @Override
+
     public void onClick(View view) {
 
         if (view == b1)
@@ -80,4 +117,5 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
 //            voted.setVisibility(View.GONE);
         }
     }
+
 }
