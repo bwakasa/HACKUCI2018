@@ -71,7 +71,7 @@ public class firstPage extends AppCompatActivity implements View.OnClickListener
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        })
         {
 
         }
