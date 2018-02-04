@@ -2,6 +2,7 @@ package com.example.bwakasa.uci.edu.test3;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -148,7 +149,7 @@ public class Results extends AppCompatActivity {
         current_match = (HashMap.Entry<String, HashMap<String, String>>) it.next();
     }
 
-    public void onNext() {
+    public void onNext(View view) {
         String first_img_loc = current_match.getValue().get("image_key1");
         String second_img_loc = current_match.getValue().get("image_key2");
 
@@ -170,6 +171,7 @@ public class Results extends AppCompatActivity {
         text1_2.setText(current_match.getValue().get("score2"));
 
         storageRef = storageRef.getParent();
+        if(!it.hasNext()) { return; }
         current_match = (HashMap.Entry<String, HashMap<String, String>>) it.next();
 
         first_img_loc = current_match.getValue().get("image_key1");
@@ -193,6 +195,7 @@ public class Results extends AppCompatActivity {
         text2_2.setText(current_match.getValue().get("score2"));
 
         storageRef = storageRef.getParent();
+        if(!it.hasNext()) { return; }
         current_match = (HashMap.Entry<String, HashMap<String, String>>) it.next();
 
         first_img_loc = current_match.getValue().get("image_key1");
@@ -216,6 +219,7 @@ public class Results extends AppCompatActivity {
         text3_2.setText(current_match.getValue().get("score2"));
 
         storageRef = storageRef.getParent();
+        if(!it.hasNext()) { return; }
         current_match = (HashMap.Entry<String, HashMap<String, String>>) it.next();
     }
 
