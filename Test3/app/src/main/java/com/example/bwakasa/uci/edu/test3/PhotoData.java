@@ -63,6 +63,7 @@ public class PhotoData extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String name = dataSnapshot.getValue().toString();
                 alist.add(name);
+                System.out.print(alist);
             }
 
             @Override
